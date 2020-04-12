@@ -20,6 +20,11 @@
         <el-tab-pane label="博客配置" name="blogcfg">
           <blog_cfg></blog_cfg>
         </el-tab-pane>
+
+        <el-tab-pane label="录入销量" name="inputamount">
+          <input_amount></input_amount>
+        </el-tab-pane>
+
       </el-tabs>
     </el-main>
   </el-container>
@@ -27,6 +32,7 @@
 <script>
   import BlogTable from '@/components/BlogTable'
   import BlogCfg from '@/components/BlogCfg'
+  import InputAmount from '@/components/InputAmount'
   import {postRequest} from '../utils/api'
   import {putRequest} from '../utils/api'
   import {deleteRequest} from '../utils/api'
@@ -48,12 +54,13 @@
     },
     methods: {
       handleClick(tab, event) {
-//        console.log(tab, event);
+       console.log(tab, event);
       }
     },
     components: {
       'blog_table': BlogTable,
-      'blog_cfg': BlogCfg
+      'blog_cfg': BlogCfg,
+      "input_amount":InputAmount
     }
   };
 </script>
