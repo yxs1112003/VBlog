@@ -1,86 +1,41 @@
 <template>
-  <el-card style="width: 500px" v-loading="loading">
-    <el-form>
-      <div style="text-align: left">
-        <div>组别: {{ message }}
-          <el-select slot="append" v-model="select" placeholder="请选择">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">  
-            </el-option>
-          </el-select>
-          <label>日期:</label>
-          <!--todo: 缺少日期控件 -->
-        </div>
-
-        <div><p>销售名字: {{ login_form }}</p></div>
-        <div><label>拜访客户(家)</label><input v-model="message" placeholder="edit me"></div>
-        <div>
-          <label>批发:</label><input v-model="message" placeholder="edit me">
-          <label>制高点:</label><input v-model="message" placeholder="edit me">
-        </div>
-        <div>
-          <label>陈列:</label><input v-model="message" placeholder="edit me">
-          <label>其他:</label><input v-model="message" placeholder="edit me">
-        </div>
-      </div>
+  <div style="text-align: left">
+    <el-form :model="submitModel" label-position="top" ref="submitModel"
+             style="color:#20a0ff;font-size: 14px;">
+      <el-form-item>
+        <!--<el-label name="hhhhh">拜访客户（家）</el-label>-->
+        <el-input type="text" auto-complete="off" style="width: 300px"
+                  v-model="submitModel.visitname" placeholder="姓名" size="mini"></el-input>
+        <el-button type="primary" @click="submitForm" size="mini">确定</el-button>
+      </el-form-item>
     </el-form>
-  </el-card>
+  </div>
 </template>
 <script>
-  import {getRequest} from '../utils/api'
-  import {putRequest} from '../utils/api'
-  import loginForm from '@/components/Login'
+  import {postRequest} from '../utils/api'
 
   export default {
     data() {
       return {
-        emailValidateForm: {
-          email: ''
-        },
-        loading: false
+        submitModel: {visitname: ''}
       }
     },
-    mounted: function () {
-      var _this = this;
-      getRequest("/currentUserEmail").then(resp => {
-        if (resp.status == 200) {
-          _this.emailValidateForm.email = resp.data;
-        }
-      });
-    },
     methods: {
-      submitForm(formName) {
+      submitForm() {
         var _this = this;
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            _this.loading = true;
-            putRequest("/updateUserEmail", {email: _this.emailValidateForm.email}).then(resp => {
-              _this.loading = false;
-              if (resp.status == 200) {
-                _this.$message({type: resp.data.status, message: resp.data.msg});
-              } else {
-                _this.$message({type: 'error', message: '开启失败!'});
-              }
-            }, resp => {
-              _this.loading = false;
-              _this.$message({type: 'error', message: '开启失败!'});
-            });
-          } else {
-            _this.$message({type: 'error', message: '邮箱格式不对哦!'})
-            return false;
+        this.loading = true;
+        postRequest('/article/sale_input', {
+          visitName: this.submitModel.visitname
+        }).then(resp => {
+          _this.loading = false;
+          console.info(resp)
+          if (resp.status == 200) {
+            // console.info("fkfkfkfkfk")
           }
+        }, resp => {
+          _this.loading = false;
+          _this.$alert('找不到服务器⊙﹏⊙∥!', '失败!');
         });
-      },
-      methods: {
-        handleClick(tab, event) {
-          console.log(tab, event);
-        }
-      },
-      components: {
-        "login_form": loginForm
       }
     }
   }
