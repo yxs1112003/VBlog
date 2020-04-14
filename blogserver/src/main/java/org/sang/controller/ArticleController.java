@@ -114,10 +114,4 @@ public class ArticleController {
     map.put("ds", dataStatistics);
     return map;
   }
-
-  @PostMapping("/sale_input")
-  public Map<String, Object> saleInput(String visitName) {
-    log.info(visitName);
-    return null;
-  }
 }
