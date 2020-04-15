@@ -126,7 +126,7 @@
     },
     methods: {
       submitForm() {
-        axios.post('/sale/enter_sale', {
+        axios.post('/sale/sale_data_input', {
           visitName: this.submitModel.visitName,
           wholeSale: this.submitModel.wholeSale,
           salerName: this.submitModel.salerName,

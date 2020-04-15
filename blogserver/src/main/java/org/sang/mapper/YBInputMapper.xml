@@ -2,9 +2,38 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.sang.mapper.ArticleMapper">
-    <insert id="addNewArticle" parameterType="org.sang.bean.Article" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO article SET title=#{title},mdContent=#{mdContent},htmlContent=#{htmlContent},summary=#{summary},cid=#{cid},uid=#{uid},publishDate=#{publishDate},state=#{state},editTime=#{editTime}
+<mapper namespace="org.sang.mapper.YBInputMapper">
+    <insert id="addNewSaleInput" parameterType="org.sang.bean.YBInput" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO yb_input set
+            group_id = #{groupId},
+            saler_name = #{salerName},
+            visit_name = #{visitName},
+            whole_sale = #{wholeSale},
+            dominant_position = #{dominantPosition},
+            display = #{display},
+            other = #{other},
+            visit_by_route =#{visitByRoute},
+            visit_by_phone = #{visitByPhone},
+            order_count = #{orderCount},
+            water_sale_count =#{waterSaleCount},
+            water333 = #{water333},
+            water555 = #{water555},
+            water1500 = #{water1500},
+            water4500 = #{water4500},
+            drink_sale_count = #{drinkSaleCount},
+            huojia = #{huojia},
+            mishui = #{mishui},
+            other_drink = #{otherDrink},
+            created_at = #{createdAt}
     </insert>
 
+    <select id="querySaleGroup" resultMap="BaseResultMap">
+         SELECT * FROM yb_sale_group
+    </select>
+
+    <resultMap id="BaseResultMap" type="org.sang.bean.YBGroup">
+        <id column="id" property="id"/>
+        <result column="id" property="id"/>
+        <result column="group_name" property="groupName"/>
+    </resultMap>
 </mapper>
