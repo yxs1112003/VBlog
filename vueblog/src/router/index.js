@@ -103,19 +103,20 @@ export default new Router({
     //     }
     //   ]
     // },
-    {
-      path: '/home',
-      component: Home,
-      name: '数据录入',
-      iconCls: 'fa fa-bar-chart',
-      children: [
-        {
-          path: '/yb_input',
-          iconCls: 'fa fa-bar-chart',
-          name: '数据录入',
-          component: YBInput
-        }
-      ]
-    }
+
+    // {
+    //   path: '/home',
+    //   component: Home,
+    //   name: '数据录入1',
+    //   iconCls: 'fa fa-bar-chart',
+    //   children: [
+    //     {
+    //       path: '/yb_input',
+    //       iconCls: 'fa fa-bar-chart',
+    //       name: '数据录入',
+    //       component: YBInput
+    //     }
+    //   ]
+    // }
   ]
 })
