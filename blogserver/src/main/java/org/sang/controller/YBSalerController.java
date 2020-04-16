@@ -5,12 +5,12 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.sang.bean.YBGroup;
 import org.sang.bean.YBInput;
+import org.sang.bean.YBSaleUser;
 import org.sang.service.YBInputService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -23,7 +23,7 @@ import java.util.List;
 @Controller
 @RestController
 @RequestMapping("/sale")
-public class SalerController {
+public class YBSalerController {
 
   @Autowired
   private YBInputService ybInputService;
@@ -41,5 +41,13 @@ public class SalerController {
     List<YBGroup> aList = ybInputService.querySaleGroup();
     log.info("=====> {}", aList.toString());
     return aList;
+  }
+
+  @ApiOperation(value = "销售组别查询", notes = "")
+  @PostMapping("/add_sale")
+  public void add_sale(@RequestBody YBSaleUser ybSaleUser) {
+    log.info("====> ybSaleUser: {}", ybSaleUser);
+
+    ybInputService.addSale(ybSaleUser);
   }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.sang.mapper.YBInputMapper">
+<mapper namespace="org.sang.mapper.YBSaleMapper">
     <insert id="addNewSaleInput" parameterType="org.sang.bean.YBInput" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO yb_input set
             group_id = #{groupId},
@@ -36,4 +36,13 @@
         <result column="id" property="id"/>
         <result column="group_name" property="groupName"/>
     </resultMap>
+
+    <insert id="addSale" parameterType="org.sang.bean.YBSaleUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO yb_sale_user set
+            username = #{username},
+            password = #{password},
+            phoneNumber = #{phoneNumber},
+            group_id = #{groupId},
+            role = #{role}
+    </insert>
 </mapper>

@@ -5,7 +5,7 @@
       <el-form-item>
         <el-label name="visitName">拜访客户(家)：</el-label>
         <el-input type="text" auto-complete="off" style="width: 300px"
-                  v-model="submitModel.visitName" placeholder="姓名" size="mini">
+                  v-model="submitModel.username" placeholder="姓名" size="mini">
         </el-input>
       </el-form-item>
       <el-form-item>
@@ -16,7 +16,7 @@
       <el-form-item>
         <el-label name="salerName">制高点：</el-label>
         <el-input type="text" auto-complete="off" style="width: 300px"
-                  v-model="submitModel.salerName" placeholder="批发" size="mini"></el-input>
+                  v-model="submitModel.phoneNumber" placeholder="批发" size="mini"></el-input>
       </el-form-item>
       <el-form-item>
         <el-label name="display">陈列：</el-label>
@@ -26,7 +26,7 @@
       <el-form-item>
         <el-label name="other">其他：</el-label>
         <el-input type="text" auto-complete="off" style="width: 300px"
-                  v-model="submitModel.other" placeholder="批发" size="mini"></el-input>
+                  v-model="submitModel.role" placeholder="批发" size="mini"></el-input>
       </el-form-item>
       <el-form-item>
         <el-label name="visitByRoute">走线拜访：</el-label>
@@ -104,11 +104,11 @@
     data() {
       return {
         submitModel: {
-          visitName: '',
-          wholeSale: '',
-          salerName: '',
+          username: '',
+          password: '',
+          phoneNumber: '',
           display: '',
-          other: '',
+          role: '',
           visitByRoute: '',
           visitByPhone: '',
           orderCount: '',
@@ -127,11 +127,11 @@
     methods: {
       submitForm() {
         axios.post('/sale/sale_data_input', {
-          visitName: this.submitModel.visitName,
-          wholeSale: this.submitModel.wholeSale,
-          salerName: this.submitModel.salerName,
+          username: this.submitModel.username,
+          password: this.submitModel.password,
+          phoneNumber: this.submitModel.phoneNumber,
           display: this.submitModel.display,
-          other: this.submitModel.other,
+          role: this.submitModel.role,
           visitByRoute: this.submitModel.visitByRoute,
           visitByPhone: this.submitModel.visitByPhone,
           orderCount: this.submitModel.orderCount,

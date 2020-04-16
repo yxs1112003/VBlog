@@ -2,27 +2,33 @@
   <el-container class="article_list">
     <el-main class="main">
       <el-tabs v-model="activeName" @tab-click="handleClick" type="card">
-        <el-tab-pane label="全部文章" name="all">
-          <blog_table state="-1" :showEdit="false" :showDelete="false" :showRestore="false" :activeName="activeName"></blog_table>
-        </el-tab-pane>
-        <el-tab-pane label="已发表" name="post">
-          <blog_table state="1" :showEdit="true" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>
-        </el-tab-pane>
-        <el-tab-pane label="草稿箱" name="draft">
-          <blog_table state="0" :showEdit="true" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>
-        </el-tab-pane>
-        <el-tab-pane label="回收站" name="dustbin">
-          <blog_table state="2" :showEdit="false" :showDelete="true" :showRestore="true" :activeName="activeName"></blog_table>
-        </el-tab-pane>
-        <el-tab-pane label="博客管理" name="blogmana" v-if="isAdmin">
-          <blog_table state="-2" :showEdit="false" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>
-        </el-tab-pane>
-        <el-tab-pane label="博客配置" name="blogcfg">
-          <blog_cfg></blog_cfg>
-        </el-tab-pane>
+        <!--<el-tab-pane label="全部文章" name="all">-->
+          <!--<blog_table state="-1" :showEdit="false" :showDelete="false" :showRestore="false" :activeName="activeName"></blog_table>-->
+        <!--</el-tab-pane>-->
+        <!--<el-tab-pane label="已发表" name="post">-->
+          <!--<blog_table state="1" :showEdit="true" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
+        <!--</el-tab-pane>-->
+        <!--<el-tab-pane label="草稿箱" name="draft">-->
+          <!--<blog_table state="0" :showEdit="true" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
+        <!--</el-tab-pane>-->
+        <!--<el-tab-pane label="回收站" name="dustbin">-->
+          <!--<blog_table state="2" :showEdit="false" :showDelete="true" :showRestore="true" :activeName="activeName"></blog_table>-->
+        <!--</el-tab-pane>-->
+        <!--<el-tab-pane label="博客管理" name="blogmana" v-if="isAdmin">-->
+          <!--<blog_table state="-2" :showEdit="false" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
+        <!--</el-tab-pane>-->
+        <!--<el-tab-pane label="博客配置" name="blogcfg">-->
+          <!--<blog_cfg></blog_cfg>-->
+        <!--</el-tab-pane>-->
 
-        <el-tab-pane label="录入销量" name="inputamount">
-          <input_amount></input_amount>
+        <el-tab-pane label="录入销量" name="yb_input">
+          <yb_input/>
+        </el-tab-pane>
+        <el-tab-pane label="业绩检查" name="perform_check">
+          <yb_result_check/>
+        </el-tab-pane>
+        <el-tab-pane label="用户管理" name="user_manage">
+          <yb_user_manage/>
         </el-tab-pane>
 
       </el-tabs>
@@ -30,12 +36,14 @@
   </el-container>
 </template>
 <script>
-  import BlogTable from '@/components/BlogTable'
-  import BlogCfg from '@/components/BlogCfg'
-  import InputAmount from '@/components/InputAmount'
-  import {postRequest} from '../utils/api'
-  import {putRequest} from '../utils/api'
-  import {deleteRequest} from '../utils/api'
+  // import BlogTable from '@/components/BlogTable'
+  // import BlogCfg from '@/components/BlogCfg'
+  import YBInput from '@/components/YBInput'
+  import YBUserManage from '@/components/YBUserManage'
+  import YBResultCheck from '@/components/YBResultCheck'
+  // import {postRequest} from '../utils/api'
+  // import {putRequest} from '../utils/api'
+  // import {deleteRequest} from '../utils/api'
   import {getRequest} from '../utils/api'
   export default {
     mounted: function () {
@@ -58,9 +66,12 @@
       }
     },
     components: {
-      'blog_table': BlogTable,
-      'blog_cfg': BlogCfg,
-      "input_amount":InputAmount
+      // 'blog_table': BlogTable,
+      // 'blog_cfg': BlogCfg,
+      "yb_input":YBInput,
+      "yb_user_manage": YBUserManage,
+      "yb_result_check": YBResultCheck
+
     }
   };
 </script>

@@ -30,3 +30,14 @@ CREATE TABLE `yb_sale_group` (
   `group_name` varchar(255) DEFAULT '' COMMENT '组别',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- 用户
+CREATE TABLE `yb_sale_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT '' COMMENT '用户名',
+  `password` varchar(255) DEFAULT '' COMMENT '密码',
+  `phoneNumber` varchar(255) DEFAULT '' COMMENT '密码',
+  `group_id` int(11) DEFAULT -1 COMMENT 'group_id',
+  `role` varchar(255) DEFAULT '' COMMENT '角色',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8

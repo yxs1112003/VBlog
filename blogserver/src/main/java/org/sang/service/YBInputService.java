@@ -2,6 +2,7 @@ package org.sang.service;
 
 import org.sang.bean.YBGroup;
 import org.sang.bean.YBInput;
+import org.sang.bean.YBSaleUser;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface YBInputService {
   void addNewSaleInput(YBInput ybInput);
 
   List<YBGroup> querySaleGroup();
+
+  void addSale(YBSaleUser ybSaleUser);
 }

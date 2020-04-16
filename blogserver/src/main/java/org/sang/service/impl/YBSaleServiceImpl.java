@@ -2,7 +2,8 @@ package org.sang.service.impl;
 
 import org.sang.bean.YBGroup;
 import org.sang.bean.YBInput;
-import org.sang.mapper.YBInputMapper;
+import org.sang.bean.YBSaleUser;
+import org.sang.mapper.YBSaleMapper;
 import org.sang.service.YBInputService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,19 +17,24 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class YBInputServiceImpl implements YBInputService {
+public class YBSaleServiceImpl implements YBInputService {
 
   @Autowired
-  private YBInputMapper ybInputMapper;
+  private YBSaleMapper ybSaleMapper;
 
   @Override
   public void addNewSaleInput(YBInput ybInput) {
-    ybInputMapper.addNewSaleInput(ybInput);
+    ybSaleMapper.addNewSaleInput(ybInput);
 
   }
 
   @Override
   public List<YBGroup>  querySaleGroup() {
-    return ybInputMapper.querySaleGroup();
+    return ybSaleMapper.querySaleGroup();
+  }
+
+  @Override
+  public void addSale(YBSaleUser ybSaleUser) {
+    ybSaleMapper.addSale(ybSaleUser);
   }
 }

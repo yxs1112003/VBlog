@@ -1,11 +1,11 @@
 <template>
   <div style="text-align: left">
-    <!--<el-form :model="submitModel2" label-position="top" ref="submitModel2"-->
+    <!--<el-form :groupId="submitModel2" label-position="top" ref="submitModel2"-->
              <!--style="color:#20a0ff;font-size: 14px;">-->
       <!--&lt;!&ndash;<el-form-item>&ndash;&gt;-->
-        <!--&lt;!&ndash;<el-label name="visitName">业绩检查：</el-label>&ndash;&gt;-->
+        <!--&lt;!&ndash;<el-label name="username">业绩检查：</el-label>&ndash;&gt;-->
         <!--&lt;!&ndash;<el-input type="text" auto-complete="off" style="width: 300px"&ndash;&gt;-->
-                  <!--&lt;!&ndash;v-model="submitModel.visitName" placeholder="姓名" size="mini">&ndash;&gt;-->
+                  <!--&lt;!&ndash;v-groupId="submitModel.username" placeholder="姓名" size="mini">&ndash;&gt;-->
         <!--&lt;!&ndash;</el-input>&ndash;&gt;-->
       <!--&lt;!&ndash;</el-form-item>&ndash;&gt;-->
 
@@ -24,22 +24,22 @@
     // data() {
     //   return {
     //     userManageModel: {
-    //       visitName: '',
-    //       wholeSale: '',
-    //       salerName: '',
+    //       username: '',
+    //       password: '',
+    //       phoneNumber: '',
     //       display: '',
-    //       other: '',
+    //       role: '',
     //     }
     //   }
     // },
     // methods: {
     //   submitForm() {
     //     axios.post('/sale/enter_sale', {
-    //       visitName: this.userManageModel.visitName,
-    //       wholeSale: this.userManageModel.wholeSale,
-    //       salerName: this.userManageModel.salerName,
+    //       username: this.userManageModel.username,
+    //       password: this.userManageModel.password,
+    //       phoneNumber: this.userManageModel.phoneNumber,
     //       display: this.userManageModel.display,
-    //       other: this.userManageModel.other,
+    //       role: this.userManageModel.role,
     //     })
     //       .then(response => (this.info = response))
     //       .catch(function (error) { // 请求失败处理
