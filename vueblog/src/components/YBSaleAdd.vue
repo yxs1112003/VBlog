@@ -22,12 +22,14 @@
 
       <el-form-item>
         <el-label name="sale_group">组别：</el-label>
-        <el-select name="sale_group_select" size="small" :data="userGroupModel" v-on:change="querySaleGroup"
+        <el-select name="sale_group_select" size="small" :data="userGroupModel"
+                   @visible-change="querySaleGroup"
                    v-model="userManageModel.groupId">
           <el-option v-for="(item,index) in userGroupModel"
                      :value="item.id"
                      :key="index"
-                     :label="item.groupName">
+                     :label="item.groupName"
+                     >
           </el-option>
         </el-select>
       </el-form-item>
