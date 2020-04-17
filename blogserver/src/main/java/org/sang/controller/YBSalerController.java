@@ -45,9 +45,16 @@ public class YBSalerController {
 
   @ApiOperation(value = "销售组别查询", notes = "")
   @PostMapping("/add_sale")
-  public void add_sale(@RequestBody YBSaleUser ybSaleUser) {
+  public void addSale(@RequestBody YBSaleUser ybSaleUser) {
     log.info("====> ybSaleUser: {}", ybSaleUser);
 
     ybInputService.addSale(ybSaleUser);
+  }
+
+  @ApiOperation(value = "销售组别查询", notes = "")
+  @PostMapping("/query_yb_sale_user")
+  public void querySale() {
+    List<YBSaleUser> ybSaleUserList = ybInputService.queryYBSaleUser();
+    log.info("====> query_yb_sale_user: {}", ybSaleUserList);
   }
 }

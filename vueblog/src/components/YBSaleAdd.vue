@@ -1,5 +1,6 @@
 <template>
   <div style="text-align: left">
+    <el-button type="primary" @click="submitForm" size="mini">查询用户</el-button>
     <el-form :model="userManageModel" label-position="top" ref="userManageModel"
              style="color:#20a0ff;font-size: 14px;">
       <el-form-item>

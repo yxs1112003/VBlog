@@ -18,4 +18,6 @@ public interface YBSaleMapper {
   List<YBGroup> querySaleGroup();
 
   void addSale(YBSaleUser ybSaleUser);
+
+  List<YBSaleUser> queryYBSaleUser();
 }

@@ -2,23 +2,24 @@
   <el-container class="article_list">
     <el-main class="main">
       <el-tabs v-model="activeName" @tab-click="handleClick" type="card">
-        <!--<el-tab-pane label="全部文章" name="all">-->
-          <!--<blog_table state="-1" :showEdit="false" :showDelete="false" :showRestore="false" :activeName="activeName"></blog_table>-->
-        <!--</el-tab-pane>-->
+        <el-tab-pane label="全部文章" name="all">
+          <blog_table state="-1" :showEdit="false" :showDelete="false" :showRestore="false"
+                      :activeName="activeName"></blog_table>
+        </el-tab-pane>
         <!--<el-tab-pane label="已发表" name="post">-->
-          <!--<blog_table state="1" :showEdit="true" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
+        <!--<blog_table state="1" :showEdit="true" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
         <!--</el-tab-pane>-->
         <!--<el-tab-pane label="草稿箱" name="draft">-->
-          <!--<blog_table state="0" :showEdit="true" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
+        <!--<blog_table state="0" :showEdit="true" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
         <!--</el-tab-pane>-->
         <!--<el-tab-pane label="回收站" name="dustbin">-->
-          <!--<blog_table state="2" :showEdit="false" :showDelete="true" :showRestore="true" :activeName="activeName"></blog_table>-->
+        <!--<blog_table state="2" :showEdit="false" :showDelete="true" :showRestore="true" :activeName="activeName"></blog_table>-->
         <!--</el-tab-pane>-->
         <!--<el-tab-pane label="博客管理" name="blogmana" v-if="isAdmin">-->
-          <!--<blog_table state="-2" :showEdit="false" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
+        <!--<blog_table state="-2" :showEdit="false" :showDelete="true" :showRestore="false" :activeName="activeName"></blog_table>-->
         <!--</el-tab-pane>-->
         <!--<el-tab-pane label="博客配置" name="blogcfg">-->
-          <!--<blog_cfg></blog_cfg>-->
+        <!--<blog_cfg></blog_cfg>-->
         <!--</el-tab-pane>-->
 
         <el-tab-pane label="录入销量" name="yb_input">
@@ -28,27 +29,28 @@
           <yb_result_check/>
         </el-tab-pane>
         <el-tab-pane label="用户管理" name="user_manage">
-          <yb_user_manage/>
+          <yb_sale_add/>
         </el-tab-pane>
-
+        <el-tab-pane label="用户查询" name="yb_user_query">
+          <yb_user_query/>
+        </el-tab-pane>
       </el-tabs>
     </el-main>
   </el-container>
 </template>
 <script>
-  // import BlogTable from '@/components/BlogTable'
-  // import BlogCfg from '@/components/BlogCfg'
+  import BlogTable from '@/components/BlogTable'
+  import BlogCfg from '@/components/BlogCfg'
   import YBInput from '@/components/YBInput'
-  import YBUserManage from '@/components/YBUserManage'
   import YBResultCheck from '@/components/YBResultCheck'
-  // import {postRequest} from '../utils/api'
-  // import {putRequest} from '../utils/api'
-  // import {deleteRequest} from '../utils/api'
   import {getRequest} from '../utils/api'
+  import YBSaleQuery from "@/components/YBSaleQuery";
+  import YBSaleAdd from "@/components/YBSaleAdd";
+
   export default {
     mounted: function () {
       var _this = this;
-      getRequest("/isAdmin").then(resp=> {
+      getRequest("/isAdmin").then(resp => {
         if (resp.status == 200) {
           _this.isAdmin = resp.data;
         }
@@ -62,14 +64,15 @@
     },
     methods: {
       handleClick(tab, event) {
-       console.log(tab, event);
+        console.log(tab, event);
       }
     },
     components: {
-      // 'blog_table': BlogTable,
-      // 'blog_cfg': BlogCfg,
-      "yb_input":YBInput,
-      "yb_user_manage": YBUserManage,
+      'blog_table': BlogTable,
+      'blog_cfg': BlogCfg,
+      "yb_input": YBInput,
+      "yb_sale_add": YBSaleAdd,
+      "yb_user_query": YBSaleQuery,
       "yb_result_check": YBResultCheck
 
     }

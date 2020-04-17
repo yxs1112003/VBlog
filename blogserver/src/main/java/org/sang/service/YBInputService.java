@@ -16,4 +16,6 @@ public interface YBInputService {
   List<YBGroup> querySaleGroup();
 
   void addSale(YBSaleUser ybSaleUser);
+
+  List<YBSaleUser> queryYBSaleUser();
 }

@@ -30,11 +30,13 @@ export default new Router({
       component: Home,
       name: '文章管理',
       iconCls: 'fa fa-file-text-o',
+      // hidden: true,
       children: [
         {
           path: '/articleList',
           name: '文章列表',
           component: ArticleList,
+          // hidden: true,
           meta: {
             keepAlive: true
           }

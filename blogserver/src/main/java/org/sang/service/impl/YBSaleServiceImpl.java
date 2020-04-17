@@ -37,4 +37,9 @@ public class YBSaleServiceImpl implements YBInputService {
   public void addSale(YBSaleUser ybSaleUser) {
     ybSaleMapper.addSale(ybSaleUser);
   }
+
+  @Override
+  public List<YBSaleUser> queryYBSaleUser() {
+    return ybSaleMapper.queryYBSaleUser();
+  }
 }

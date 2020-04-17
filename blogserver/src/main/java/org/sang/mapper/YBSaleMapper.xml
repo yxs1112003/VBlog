@@ -41,8 +41,20 @@
         INSERT INTO yb_sale_user set
             username = #{username},
             password = #{password},
-            phoneNumber = #{phoneNumber},
+            phone_number = #{phoneNumber},
             group_id = #{groupId},
             role = #{role}
     </insert>
+
+    <select id="querySaleUser" resultMap="querySaleUserResultMap">
+        SELECT * FROM yb_sale_user
+    </select>
+    <resultMap id="querySaleUserResultMap" type="org.sang.bean.YBSaleUser">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="phone_number" property="phoneNumber"/>
+        <result column="group_id" property="groupId"/>
+        <result column="role" property="role"/>
+    </resultMap>
 </mapper>
