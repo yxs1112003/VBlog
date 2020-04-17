@@ -1,6 +1,7 @@
 package org.sang.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.sang.bean.YBGroup;
 import org.sang.bean.YBInput;
 import org.sang.bean.YBSaleUser;
@@ -19,7 +20,7 @@ public interface YBSaleMapper {
 
   void addSale(YBSaleUser ybSaleUser);
 
-  List<YBSaleUser> getSaleUser(Integer page, Integer count);
+  List<YBSaleUser> getSaleUser(@Param("page") Integer page, @Param("start") Integer start, @Param("count") Integer count);
 
   int getUserCount();
 }

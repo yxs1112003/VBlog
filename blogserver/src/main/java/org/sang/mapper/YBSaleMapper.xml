@@ -47,7 +47,8 @@
     </insert>
 
     <select id="getSaleUser" resultMap="getSaleUserResultMap">
-        SELECT username, password, phone_number, group_id, role FROM yb_sale_user
+        SELECT username, password, phone_number, group_id, role
+         FROM yb_sale_user limit #{start},#{count}
     </select>
     <resultMap id="getSaleUserResultMap" type="org.sang.bean.YBSaleUser">
         <id column="id" property="id"/>

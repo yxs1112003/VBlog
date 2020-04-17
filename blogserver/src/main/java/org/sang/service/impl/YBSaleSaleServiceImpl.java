@@ -39,7 +39,8 @@ public class YBSaleSaleServiceImpl implements YBSaleService {
 
   @Override
   public List<YBSaleUser> getSaleUser(Integer page, Integer count) {
-    return ybSaleMapper.getSaleUser(page, count);
+    int start = (page - 1) * count;
+    return ybSaleMapper.getSaleUser(page, start, count);
   }
 
   @Override

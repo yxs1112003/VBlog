@@ -22,7 +22,7 @@
     <!--<div style="width: 100%;height: 1px;background-color: #20a0ff;margin-top: 8px;margin-bottom: 0px"></div>-->
     <el-table
       ref="multipleTable"
-      :data="articles"
+      :data="ybSaleUserList.groupId"
       tooltip-effect="dark"
       style="width: 100%;overflow-x: hidden; overflow-y: hidden;"
       max-height="390"
@@ -70,7 +70,7 @@
       </el-table-column>
     </el-table>
     <div class="blog_table_footer">
-      <el-button type="danger" size="mini" style="margin: 0px;" v-show="this.articles.length>0 && showDelete"
+      <el-button type="danger" size="mini" style="margin: 0px;" v-show="this.ybSaleUserList.length>0 && showDelete"
                  :disabled="this.selItems.length==0" @click="deleteMany">批量删除
       </el-button>
       <span></span>
@@ -78,7 +78,7 @@
         background
         :page-size="pageSize"
         layout="prev, pager, next"
-        :total="totalCount" @current-change="currentChange" v-show="this.articles.length>0">
+        :total="totalCount" @current-change="currentChange" v-show="this.ybSaleUserList.length>0">
       </el-pagination>
     </div>
   </div>
@@ -93,12 +93,12 @@
   export default {
     data() {
       return {
-        articles: [],
+        ybSaleUserList: [],
         selItems: [],
         loading: false,
         currentPage: 1,
         totalCount: -1,
-        pageSize: 10,
+        pageSize: 6,
         keywords: '',
         dustbinData: []
       }
@@ -138,9 +138,10 @@
         var url = "/sale/get_sale_user?page=" + page + "&count=" + count;
 
         getRequest(url).then(resp => {
+
           _this.loading = false;
           if (resp.status == 200) {
-            _this.articles = resp.data.articles;
+            _this.ybSaleUserList = resp.data.ybSaleUserList;
             _this.totalCount = resp.data.totalCount;
           } else {
             _this.$message({type: 'error', message: '数据加载失败!'});
