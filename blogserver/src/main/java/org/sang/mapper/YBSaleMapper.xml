@@ -63,4 +63,6 @@
     <select id="getUserCount" resultType="int">
         SELECT count(*) FROM yb_sale_user
     </select>
+
+
 </mapper>

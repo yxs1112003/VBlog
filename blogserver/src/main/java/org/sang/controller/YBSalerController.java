@@ -59,7 +59,7 @@ public class YBSalerController {
           @RequestParam(value = "page", defaultValue = "1") Integer page,
           @RequestParam(value = "count", defaultValue = "10") Integer count) {
 
-    log.info("=====> get_sale_user: {} , {}",page,count);
+    log.info("=====> get_sale_user: {} , {}", page, count);
 
     int totalCount = ybSaleService.getUserCount();
     List<YBSaleUser> ybSaleUserList = ybSaleService.getSaleUser(page, count);
@@ -67,5 +67,12 @@ public class YBSalerController {
     map.put("totalCount", totalCount);
     map.put("articles", ybSaleUserList);
     return map;
+  }
+
+  @ApiOperation(value = "业务检查", notes = "")
+  @PostMapping("/get_result_by_date")
+  public void saleInputu(@RequestBody YBInput ybInput) {
+    log.info("====> ybInput: {}", ybInput);
+    ybSaleService.addNewSaleInput(ybInput);
   }
 }
