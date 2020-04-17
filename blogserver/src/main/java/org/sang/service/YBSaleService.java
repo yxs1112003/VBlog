@@ -10,12 +10,14 @@ import java.util.List;
  * @author xupeng
  * @date: 14/04/2020
  */
-public interface YBInputService {
+public interface YBSaleService {
   void addNewSaleInput(YBInput ybInput);
 
   List<YBGroup> querySaleGroup();
 
   void addSale(YBSaleUser ybSaleUser);
 
-  List<YBSaleUser> queryYBSaleUser();
+  List<YBSaleUser> getSaleUser(Integer page, Integer count);
+
+  int getUserCount();
 }

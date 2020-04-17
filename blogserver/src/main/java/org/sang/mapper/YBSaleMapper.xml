@@ -46,10 +46,10 @@
             role = #{role}
     </insert>
 
-    <select id="querySaleUser" resultMap="querySaleUserResultMap">
-        SELECT * FROM yb_sale_user
+    <select id="getSaleUser" resultMap="getSaleUserResultMap">
+        SELECT username, password, phone_number, group_id, role FROM yb_sale_user
     </select>
-    <resultMap id="querySaleUserResultMap" type="org.sang.bean.YBSaleUser">
+    <resultMap id="getSaleUserResultMap" type="org.sang.bean.YBSaleUser">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
@@ -57,4 +57,9 @@
         <result column="group_id" property="groupId"/>
         <result column="role" property="role"/>
     </resultMap>
+
+
+    <select id="getUserCount" resultType="int">
+        SELECT count(*) FROM yb_sale_user
+    </select>
 </mapper>

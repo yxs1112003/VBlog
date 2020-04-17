@@ -4,7 +4,7 @@ import org.sang.bean.YBGroup;
 import org.sang.bean.YBInput;
 import org.sang.bean.YBSaleUser;
 import org.sang.mapper.YBSaleMapper;
-import org.sang.service.YBInputService;
+import org.sang.service.YBSaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class YBSaleServiceImpl implements YBInputService {
+public class YBSaleSaleServiceImpl implements YBSaleService {
 
   @Autowired
   private YBSaleMapper ybSaleMapper;
@@ -25,11 +25,10 @@ public class YBSaleServiceImpl implements YBInputService {
   @Override
   public void addNewSaleInput(YBInput ybInput) {
     ybSaleMapper.addNewSaleInput(ybInput);
-
   }
 
   @Override
-  public List<YBGroup>  querySaleGroup() {
+  public List<YBGroup> querySaleGroup() {
     return ybSaleMapper.querySaleGroup();
   }
 
@@ -39,7 +38,12 @@ public class YBSaleServiceImpl implements YBInputService {
   }
 
   @Override
-  public List<YBSaleUser> queryYBSaleUser() {
-    return ybSaleMapper.queryYBSaleUser();
+  public List<YBSaleUser> getSaleUser(Integer page, Integer count) {
+    return ybSaleMapper.getSaleUser(page, count);
+  }
+
+  @Override
+  public int getUserCount() {
+    return ybSaleMapper.getUserCount();
   }
 }

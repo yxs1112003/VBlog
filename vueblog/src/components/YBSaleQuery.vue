@@ -98,7 +98,7 @@
         loading: false,
         currentPage: 1,
         totalCount: -1,
-        pageSize: 6,
+        pageSize: 10,
         keywords: '',
         dustbinData: []
       }
@@ -135,12 +135,8 @@
       },
       loadBlogs(page, count) {
         var _this = this;
-        var url = '';
-        if (this.state == -2) {
-          url = "/admin/article/all" + "?page=" + page + "&count=" + count + "&keywords=" + this.keywords;
-        } else {
-          url = "/article/all?state=" + this.state + "&page=" + page + "&count=" + count + "&keywords=" + this.keywords;
-        }
+        var url = "/sale/get_sale_user?page=" + page + "&count=" + count;
+
         getRequest(url).then(resp => {
           _this.loading = false;
           if (resp.status == 200) {

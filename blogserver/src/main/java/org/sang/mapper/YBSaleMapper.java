@@ -19,5 +19,7 @@ public interface YBSaleMapper {
 
   void addSale(YBSaleUser ybSaleUser);
 
-  List<YBSaleUser> queryYBSaleUser();
+  List<YBSaleUser> getSaleUser(Integer page, Integer count);
+
+  int getUserCount();
 }
