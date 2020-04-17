@@ -65,7 +65,7 @@ public class YBSalerController {
     List<YBSaleUser> ybSaleUserList = ybSaleService.getSaleUser(page, count);
     Map<String, Object> map = new HashMap<>();
     map.put("totalCount", totalCount);
-    map.put("ybSaleUserList", ybSaleUserList);
+    map.put("articles", ybSaleUserList);
     return map;
   }
 }
