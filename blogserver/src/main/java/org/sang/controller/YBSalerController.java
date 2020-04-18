@@ -4,8 +4,9 @@ import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.sang.bean.YBGroup;
-import org.sang.bean.YBInput;
+import org.sang.bean.YBSaleRecord;
 import org.sang.bean.YBSaleUser;
+import org.sang.service.YBSaleRecordService;
 import org.sang.service.YBSaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,11 +31,14 @@ public class YBSalerController {
   @Autowired
   private YBSaleService ybSaleService;
 
+  @Autowired
+  private YBSaleRecordService ybSaleRecordService;
+
   @ApiOperation(value = "销售数据录入", notes = "")
   @PostMapping("/sale_data_input")
-  public void saleInput(@RequestBody YBInput ybInput) {
-    log.info("====> ybInput: {}", ybInput);
-    ybSaleService.addNewSaleInput(ybInput);
+  public void saleInput(@RequestBody YBSaleRecord ybSaleRecord) {
+    log.info("====> ybSaleRecord: {}", ybSaleRecord);
+    ybSaleService.addNewSaleInput(ybSaleRecord);
   }
 
   @ApiOperation(value = "销售组别查询", notes = "")
@@ -70,9 +74,18 @@ public class YBSalerController {
   }
 
   @ApiOperation(value = "业务检查", notes = "")
-  @PostMapping("/get_result_by_date")
-  public void saleInputu(@RequestBody YBInput ybInput) {
-    log.info("====> ybInput: {}", ybInput);
-    ybSaleService.addNewSaleInput(ybInput);
+  @GetMapping("/get_sale_record")
+  public Map<String, Object> getSaleRecord(
+          @RequestParam("start_date") String startDate,
+          @RequestParam("end_date") String endDate,
+          @RequestParam(value = "page", defaultValue = "1") Integer page) {
+    log.info("====> startDate:{},endDate:{}", startDate, endDate);
+    int totalCount = ybSaleRecordService.getSaleRecordCountByDate(startDate, endDate);
+    List<YBSaleRecord> list = ybSaleRecordService.getSaleRecord(startDate, endDate, page, totalCount);
+
+    Map<String, Object> map = new HashMap<>();
+    map.put("articles", list);
+    map.put("totalCount", totalCount);
+    return map;
   }
 }

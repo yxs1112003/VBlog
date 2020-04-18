@@ -9,7 +9,7 @@ import java.util.Date;
  * @date: 13/04/2020
  */
 @Data
-public class YBInput {
+public class YBSaleRecord {
   private String groupId;
   private String salerName;
   private String visitName;
@@ -31,7 +31,7 @@ public class YBInput {
   private Integer otherDrink;
   private Date createdAt;
 
-  public YBInput() {
+  public YBSaleRecord() {
   }
 
 }

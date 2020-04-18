@@ -42,7 +42,7 @@
   import BlogTable from '@/components/BlogTable'
   import BlogCfg from '@/components/BlogCfg'
   import YBInput from '@/components/YBInput'
-  import YBResultCheck from '@/components/YBResultCheck'
+  import YBResultCheck from '@/components/YBSaleRecord'
   import {getRequest} from '../utils/api'
   import YBSaleQuery from "@/components/YBSaleQuery";
   import YBSaleAdd from "@/components/YBSaleAdd";

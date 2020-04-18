@@ -8,7 +8,6 @@ import DataCharts from '@/components/DataCharts'
 import PostArticle from '@/components/PostArticle'
 import UserMana from '@/components/UserMana'
 import BlogDetail from '@/components/BlogDetail'
-import YBInput from '@/components/YBInput'
 
 Vue.use(Router)
 

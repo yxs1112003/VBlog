@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sang.mapper.YBSaleRecordMapper">
+    <insert id="addNewSaleInput" parameterType="org.sang.bean.YBSaleRecord" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO yb_sale_record set
+            group_id = #{groupId},
+            saler_name = #{salerName},
+            visit_name = #{visitName},
+            whole_sale = #{wholeSale},
+            dominant_position = #{dominantPosition},
+            display = #{display},
+            other = #{other},
+            visit_by_route =#{visitByRoute},
+            visit_by_phone = #{visitByPhone},
+            order_count = #{orderCount},
+            water_sale_count =#{waterSaleCount},
+            water333 = #{water333},
+            water555 = #{water555},
+            water1500 = #{water1500},
+            water4500 = #{water4500},
+            drink_sale_count = #{drinkSaleCount},
+            huojia = #{huojia},
+            mishui = #{mishui},
+            other_drink = #{otherDrink},
+            created_at = #{createdAt}
+    </insert>
+
+    <select id="getSaleRecord" resultMap="getSaleRecordResultMap">
+        SELECT group_id,saler_name,visit_name,whole_sale,dominant_position,
+        display,other,visit_by_route,visit_by_phone,order_count,water_sale_count
+water333,water555,water1500,water4500,drink_sale_count,huojia,mishui,other_drink,created_at
+        FROM yb_sale_record where created_at between #{start_date} and #{end_date}
+
+    </select>
+    <resultMap id="getSaleRecordResultMap" type="org.sang.bean.YBSaleRecord">
+        <result column="group_id" property="groupId"/>
+        <result column="saler_name" property="salerName"/>
+        <result column="visit_name" property="visitName"/>
+        <result column="whole_sale" property="wholeSale"/>
+        <result column="dominant_position" property="dominantPosition"/>
+        <result column="display" property="display"/>
+        <result column="other" property="other"/>
+        <result column="visit_by_route" property="visitByRoute"/>
+        <result column="visit_by_phone" property="visitByPhone"/>
+        <result column="order_count" property="orderCount"/>
+        <result column="water_sale_count" property="waterSaleCount"/>
+        <result column="water333" property="water333"/>
+        <result column="water555" property="water555"/>
+        <result column="water1500" property="water1500"/>
+        <result column="water4500" property="water4500"/>
+        <result column="drink_sale_count" property="drinkSaleCount"/>
+        <result column="huojia" property="huojia"/>
+        <result column="mishui" property="mishui"/>
+        <result column="other_drink" property="otherDrink"/>
+        <result column="created_at" property="createdAt"/>
+    </resultMap>
+
+    <select id="getSaleRecordCountByDate" resultType="int">
+        SELECT count(*) from yb_sale_record
+
+        <where>
+            <if test="start_date!=null">
+                AND created_at>= #{start_date}
+            </if>
+            <if test="end_date!=null">
+                AND created_at &lt; #{end_date}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,7 +1,7 @@
 package org.sang.service;
 
 import org.sang.bean.YBGroup;
-import org.sang.bean.YBInput;
+import org.sang.bean.YBSaleRecord;
 import org.sang.bean.YBSaleUser;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * @date: 14/04/2020
  */
 public interface YBSaleService {
-  void addNewSaleInput(YBInput ybInput);
+  void addNewSaleInput(YBSaleRecord ybSaleRecord);
 
   List<YBGroup> querySaleGroup();
 
@@ -20,4 +20,6 @@ public interface YBSaleService {
   List<YBSaleUser> getSaleUser(Integer page, Integer count);
 
   int getUserCount();
+
+  List<YBSaleRecord> getSaleResult(String startDate, String endDate);
 }

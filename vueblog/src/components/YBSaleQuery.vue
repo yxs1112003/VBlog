@@ -136,7 +136,6 @@
       },
       loadBlogs(page, count){
         var _this = this;
-        var url = '';
         var url = "/sale/get_sale_user?page=" + page + "&count=" + count;
 
         getRequest(url).then(resp=> {

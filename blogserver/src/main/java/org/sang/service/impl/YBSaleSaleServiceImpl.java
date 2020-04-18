@@ -1,7 +1,7 @@
 package org.sang.service.impl;
 
 import org.sang.bean.YBGroup;
-import org.sang.bean.YBInput;
+import org.sang.bean.YBSaleRecord;
 import org.sang.bean.YBSaleUser;
 import org.sang.mapper.YBSaleMapper;
 import org.sang.service.YBSaleService;
@@ -23,8 +23,8 @@ public class YBSaleSaleServiceImpl implements YBSaleService {
   private YBSaleMapper ybSaleMapper;
 
   @Override
-  public void addNewSaleInput(YBInput ybInput) {
-    ybSaleMapper.addNewSaleInput(ybInput);
+  public void addNewSaleInput(YBSaleRecord ybSaleRecord) {
+    ybSaleMapper.addNewSaleInput(ybSaleRecord);
   }
 
   @Override
@@ -46,5 +46,10 @@ public class YBSaleSaleServiceImpl implements YBSaleService {
   @Override
   public int getUserCount() {
     return ybSaleMapper.getUserCount();
+  }
+
+  @Override
+  public List<YBSaleRecord> getSaleResult(String startDate, String endDate) {
+    return ybSaleMapper.getSaleResult(startDate, endDate);
   }
 }

@@ -3,7 +3,7 @@ package org.sang.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.sang.bean.YBGroup;
-import org.sang.bean.YBInput;
+import org.sang.bean.YBSaleRecord;
 import org.sang.bean.YBSaleUser;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Mapper
 public interface YBSaleMapper {
-  int addNewSaleInput(YBInput ybInput);
+  int addNewSaleInput(YBSaleRecord ybSaleRecord);
 
   List<YBGroup> querySaleGroup();
 
@@ -23,4 +23,6 @@ public interface YBSaleMapper {
   List<YBSaleUser> getSaleUser(@Param("page") Integer page, @Param("start") Integer start, @Param("count") Integer count);
 
   int getUserCount();
+
+  List<YBSaleRecord> getSaleResult(@Param("start_date") String startDate, @Param("end_date") String endDate);
 }
