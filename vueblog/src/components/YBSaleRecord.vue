@@ -20,14 +20,14 @@
           placeholder="结束日期">
         </el-date-picker>
 
-        <el-button type="primary" @click="getSaleRecord" size="mini">检索</el-button>
+        <el-button type="primary" @click="searchClick" size="mini">检索</el-button>
         <el-table
           ref="multipleTable"
           :data="articles"
           tooltip-effect="dark"
           style="width: 100%;overflow-x: hidden; overflow-y: hidden;"
           max-height="390"
-          @start_date="" v-loading="">
+          @selection-change="handleSelectionChange" v-loading="loading">
           <el-table-column
             type="selection"
             width="35" align="left" v-if="">
@@ -150,32 +150,25 @@
         currentPage: 1,
         totalCount: -1,
         pageSize: 5,
-        no_use: {
-
-        }
+        loading: false,
+        no_use: {}
       }
     },
     methods: {
       mounted: function () {
         var _this = this;
         this.loading = true;
-        this.currentChange(1, this.pageSize);
-        // var _this = this;
-        // window.bus.$on('blogTableReload', function () {
-        //   _this.loading = true;
-        //   _this.loadBlogs(_this.currentPage, _this.pageSize);
-        // })
+        var _this = this;
+        window.bus.$on('blogTableReload', function () {
+          _this.loading = true;
+          _this.loadBlogs(_this.currentPage, _this.pageSize);
+        })
       },
 
-      currentChange(currentPage) {
-        this.currentPage = currentPage;
-        this.loading = true;
-        console.info(this.currentPage);
-        console.info(this.pageSize);
-        this.getSaleRecord(currentPage, this.pageSize);
-      },
-      getSaleRecord(page, count) {
+      loadBlogs(page, count) {
+        var _this = this;
         var url = "/sale/get_sale_record?start_date=" + this.start_date + "&end_date=" + this.end_date + "&page=" + page + "&count=" + count;
+
         console.info("url:" + url);
 
         axios.get(url).then(resp => {
@@ -197,7 +190,20 @@
           //压根没见到服务器
           _this.loading = false;
           _this.$message({type: 'error', message: '数据加载失败!'});
-        });
+        })
+      },
+
+      currentChange(currentPage) {
+        this.currentPage = currentPage;
+        this.loading = true;
+        this.loadBlogs(currentPage, this.pageSize);
+      },
+
+      handleSelectionChange(val) {
+        this.selItems = val;
+      },
+      searchClick() {
+        this.loadBlogs(1, this.pageSize);
       }
     }
   }

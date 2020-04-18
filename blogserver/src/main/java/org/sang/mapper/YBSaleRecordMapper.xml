@@ -32,7 +32,7 @@
         display,other,visit_by_route,visit_by_phone,order_count,water_sale_count
 water333,water555,water1500,water4500,drink_sale_count,huojia,mishui,other_drink,created_at
         FROM yb_sale_record where created_at between #{start_date} and #{end_date}
-
+        limit #{start},#{count}
     </select>
     <resultMap id="getSaleRecordResultMap" type="org.sang.bean.YBSaleRecord">
         <result column="group_id" property="groupId"/>

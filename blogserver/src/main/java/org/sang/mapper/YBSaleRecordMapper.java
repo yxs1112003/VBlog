@@ -19,8 +19,8 @@ public interface YBSaleRecordMapper {
   List<YBSaleRecord> getSaleRecord(
           @Param("start_date") String startDate,
           @Param("end_date") String endDate,
-          @Param("start_count") Integer startCount,
-          @Param("total_count") Integer totalCount
+          @Param("start") Integer start,
+          @Param("count") Integer count
   );
 
   int getSaleRecordCountByDate(
