@@ -26,7 +26,6 @@
           :data="articles"
           tooltip-effect="dark"
           style="width: 100%;overflow-x: hidden; overflow-y: hidden;"
-          max-height="390"
           @selection-change="handleSelectionChange" v-loading="loading">
           <el-table-column
             type="selection"
@@ -109,22 +108,18 @@
               </el-button>
               <el-button
                 size="mini"
-                @click="handleRestore(scope.$index, scope.row)" v-if="showRestore">还原
+                @click="handleRestore(scope.$index, scope.row)" v-if="">还原
               </el-button>
               <el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)" v-if="showDelete">删除
+                @click="handleDelete(scope.$index, scope.row)" v-if="">删除
               </el-button>
             </template>
           </el-table-column>
         </el-table>
 
         <div class="blog_table_footer">
-          <!--<el-button type="danger" size="mini" style="margin: 0px;" v-show="this.articles.length>0 && showDelete"-->
-          <!--:disabled="this.selItems.length==0" @click="deleteMany">批量删除-->
-          <!--</el-button>-->
-          <!--<span></span>-->
           <el-pagination
             background
             :page-size="pageSize"
@@ -194,8 +189,11 @@
       },
 
       currentChange(currentPage) {
+
+        console.info(currentPage);
+
         this.currentPage = currentPage;
-        this.loading = true;
+        // this.loading = true;
         this.loadBlogs(currentPage, this.pageSize);
       },
 

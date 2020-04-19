@@ -91,20 +91,20 @@ export default new Router({
     //     }
     //   ]
     // },
-    {
-      path: '/home',
-      component: Home,
-      name: '数据统计',
-      iconCls: 'fa fa-bar-chart',
-      children: [
-        {
-          path: '/charts',
-          iconCls: 'fa fa-bar-chart',
-          name: '数据统计',
-          component: DataCharts
-        }
-      ]
-    }
+    // {
+    //   path: '/home',
+    //   component: Home,
+    //   name: '数据统计',
+    //   iconCls: 'fa fa-bar-chart',
+    //   children: [
+    //     {
+    //       path: '/charts',
+    //       iconCls: 'fa fa-bar-chart',
+    //       name: '数据统计',
+    //       component: DataCharts
+    //     }
+    //   ]
+    // }
     // ,
 
     // {

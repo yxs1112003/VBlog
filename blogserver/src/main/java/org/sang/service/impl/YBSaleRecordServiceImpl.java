@@ -20,8 +20,10 @@ public class YBSaleRecordServiceImpl implements YBSaleRecordService {
 
   @Override
   public List<YBSaleRecord> getSaleRecord(
-          String startDate, String endDate, Integer page, Integer totalCount) {
-    return ybSaleRecordMapper.getSaleRecord(startDate, endDate, page, totalCount);
+          String startDate, String endDate, Integer page, Integer count) {
+    int start = (page - 1) * count;
+
+    return ybSaleRecordMapper.getSaleRecord(startDate, endDate, start, count);
   }
 
   @Override

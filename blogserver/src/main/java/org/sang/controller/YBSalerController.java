@@ -66,6 +66,9 @@ public class YBSalerController {
     log.info("=====> get_sale_user: {} , {}", page, count);
 
     int totalCount = ybSaleService.getUserCount();
+
+    log.info("count:{}", count);
+
     List<YBSaleUser> ybSaleUserList = ybSaleService.getSaleUser(page, count);
     Map<String, Object> map = new HashMap<>();
     map.put("totalCount", totalCount);
@@ -78,10 +81,11 @@ public class YBSalerController {
   public Map<String, Object> getSaleRecord(
           @RequestParam("start_date") String startDate,
           @RequestParam("end_date") String endDate,
-          @RequestParam(value = "page", defaultValue = "1") Integer page) {
+          @RequestParam(value = "page", defaultValue = "1") Integer page,
+          @RequestParam(value = "count", defaultValue = "10") Integer count) {
     log.info("====> startDate:{},endDate:{}", startDate, endDate);
     int totalCount = ybSaleRecordService.getSaleRecordCountByDate(startDate, endDate);
-    List<YBSaleRecord> list = ybSaleRecordService.getSaleRecord(startDate, endDate, page, totalCount);
+    List<YBSaleRecord> list = ybSaleRecordService.getSaleRecord(startDate, endDate, page, count);
 
     Map<String, Object> map = new HashMap<>();
     map.put("articles", list);
