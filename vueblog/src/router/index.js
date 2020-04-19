@@ -27,13 +27,13 @@ export default new Router({
     {
       path: '/home',
       component: Home,
-      name: '文章管理',
+      name: '销售管理',
       iconCls: 'fa fa-file-text-o',
       // hidden: true,
       children: [
         {
           path: '/articleList',
-          name: '文章列表',
+          name: '销售业绩',
           component: ArticleList,
           // hidden: true,
           meta: {

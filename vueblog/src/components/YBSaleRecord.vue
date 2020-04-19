@@ -26,6 +26,7 @@
           :data="articles"
           tooltip-effect="dark"
           style="width: 100%;overflow-x: hidden; overflow-y: hidden;"
+          max-height="390"
           @selection-change="handleSelectionChange" v-loading="loading">
           <el-table-column
             type="selection"
@@ -100,23 +101,23 @@
           </el-table-column>
 
 
-          <el-table-column label="操作" align="left" v-if="">
-            <template slot-scope="scope">
-              <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)" v-if="showEdit">编辑
-              </el-button>
-              <el-button
-                size="mini"
-                @click="handleRestore(scope.$index, scope.row)" v-if="">还原
-              </el-button>
-              <el-button
-                size="mini"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)" v-if="">删除
-              </el-button>
-            </template>
-          </el-table-column>
+          <!--<el-table-column label="操作" align="left" v-if="">-->
+            <!--<template slot-scope="scope">-->
+              <!--<el-button-->
+                <!--size="mini"-->
+                <!--@click="handleEdit(scope.$index, scope.row)" v-if="showEdit">编辑-->
+              <!--</el-button>-->
+              <!--<el-button-->
+                <!--size="mini"-->
+                <!--@click="handleRestore(scope.$index, scope.row)" v-if="">还原-->
+              <!--</el-button>-->
+              <!--<el-button-->
+                <!--size="mini"-->
+                <!--type="danger"-->
+                <!--@click="handleDelete(scope.$index, scope.row)" v-if="">删除-->
+              <!--</el-button>-->
+            <!--</template>-->
+          <!--</el-table-column>-->
         </el-table>
 
         <div class="blog_table_footer">
@@ -149,17 +150,29 @@
         no_use: {}
       }
     },
+    mounted: function () {
+      this.start_date = this.getStartDate();
+      this.end_date = this.getEndDate();
+      // this.tab_reload();
+    },
     methods: {
-      mounted: function () {
-        var _this = this;
+      tab_reload() {
         this.loading = true;
+        this.loadBlogs(1, this.pageSize);
         var _this = this;
         window.bus.$on('blogTableReload', function () {
           _this.loading = true;
           _this.loadBlogs(_this.currentPage, _this.pageSize);
         })
       },
-
+      getStartDate() {
+        var date = new Date();
+        return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + "01";
+      },
+      getEndDate() {
+        var date = new Date();
+        return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + (date.getDate() - 1);
+      },
       loadBlogs(page, count) {
         var _this = this;
         var url = "/sale/get_sale_record?start_date=" + this.start_date + "&end_date=" + this.end_date + "&page=" + page + "&count=" + count;

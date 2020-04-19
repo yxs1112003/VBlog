@@ -1,91 +1,74 @@
 <template>
   <div style="text-align: left">
-    <el-form :model="submitModel" label-position="top" ref="submitModel"
-             style="color:#20a0ff;font-size: 14px;">
-      <el-form-item>
-        <el-label name="visitName">拜访客户(家)：</el-label>
+    <el-form :model="submitModel" ref="submitModel"
+             style="color:#20a0ff;font-size: 14px;" :label-position="right" label-width="120px">
+      <el-form-item label="拜访客户(家)：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.username" placeholder="姓名" size="mini">
         </el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="wholeSale">批发：</el-label>
+      <el-form-item label="批发：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.wholesale" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="salerName">制高点：</el-label>
+      <el-form-item label="制高点：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.phoneNumber" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="display">陈列：</el-label>
+      <el-form-item label="陈列：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.display" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="other">其他：</el-label>
+      <el-form-item label="其他：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.role" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="visitByRoute">走线拜访：</el-label>
+      <el-form-item label="走线拜访：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.visitByRoute" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="visitByPhone">电话拜访：</el-label>
+      <el-form-item label="电话拜访：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.visitByPhone" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="orderCount">订单（张）：</el-label>
+      <el-form-item label="订单（张）：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.orderCount" placeholder="批发" size="mini"></el-input>
       </el-form-item>
 
-      <el-form-item>
-        <el-label name="waterSaleCount">水销量（箱）：</el-label>
+      <el-form-item label="水销量（箱）：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.waterSaleCount" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="water333">333水：</el-label>
+      <el-form-item label="333水：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.water333" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="water555">555水：</el-label>
+      <el-form-item label="555水：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.water555" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="water1500">1.5L水：</el-label>
+      <el-form-item label="1.5L水：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.water1500" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="water4500">4.5L水：</el-label>
+      <el-form-item label="4.5L水：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.water4500" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="drinkSaleCount">饮料量（箱）：</el-label>
+      <el-form-item label="饮料量（箱）：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.drinkSaleCount" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="huojia">火咖：</el-label>
+      <el-form-item label="火咖：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.huojia" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="mishui">蜜水：</el-label>
+      <el-form-item label="蜜水：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.mishui" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="otherDrink">其他：</el-label>
+      <el-form-item label="其他：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="submitModel.otherDrink" placeholder="批发" size="mini"></el-input>
       </el-form-item>
@@ -153,3 +136,4 @@
     }
   }
 </script>
+

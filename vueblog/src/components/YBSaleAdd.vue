@@ -1,45 +1,39 @@
 <template>
   <div style="text-align: left">
-    <el-button type="primary" @click="submitForm" size="mini">查询用户</el-button>
-    <el-form :model="userManageModel" label-position="top" ref="userManageModel"
+    <!--<el-button type="primary" @click="submitForm" size="mini">查询用户</el-button>-->
+    <el-form :model="userManageModel" :label-position="left" ref="userManageModel"
              style="color:#20a0ff;font-size: 14px;">
-      <el-form-item>
-        <el-label>姓名：</el-label>
+      <el-form-item label="姓名：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="userManageModel.username" placeholder="姓名" size="mini">
         </el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="sale_password">密码：</el-label>
+      <el-form-item label="密码：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="userManageModel.password" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-form-item>
-        <el-label name="sale_phone">电话：</el-label>
+      <el-form-item label="电话：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="userManageModel.phoneNumber" placeholder="批发" size="mini"></el-input>
       </el-form-item>
 
-      <el-form-item>
-        <el-label name="sale_group">组别：</el-label>
+      <el-form-item label="组别：">
         <el-select name="sale_group_select" size="small" :data="userGroupModel"
                    @visible-change="querySaleGroup"
                    v-model="userManageModel.groupId">
           <el-option v-for="(item,index) in userGroupModel"
                      :value="item.id"
                      :key="index"
-                     :label="item.groupName"
-                     >
+                     :label="item.groupName">
           </el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item>
-        <el-label name="sale_role">角色：</el-label>
+      <el-form-item label="角色：">
         <el-input type="text" auto-complete="off" style="width: 300px"
                   v-model="userManageModel.role" placeholder="批发" size="mini"></el-input>
       </el-form-item>
-      <el-button type="primary" @click="submitForm" size="mini">确定</el-button>
+      <el-button type="primary" @click="submitForm" size="mini">提交</el-button>
     </el-form>
   </div>
 </template>
