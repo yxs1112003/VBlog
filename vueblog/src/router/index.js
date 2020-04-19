@@ -9,7 +9,8 @@ import PostArticle from '@/components/PostArticle'
 import UserMana from '@/components/UserMana'
 import BlogDetail from '@/components/BlogDetail'
 import YBSaleAdd from "@/components/YBSaleAdd";
-import YBUserList from "../components/YBUserList";
+import YBSaleList from "../components/YBSaleList";
+import YBSystemList from "../components/YBSystemList";
 
 Vue.use(Router)
 
@@ -118,7 +119,7 @@ export default new Router({
           path: '/charts',
           iconCls: 'fa fa-bar-chart',
           name: '销售管理',
-          component: YBUserList
+          component: YBSaleList
         }
       ]
     },
@@ -129,10 +130,10 @@ export default new Router({
       iconCls: 'fa fa-bar-chart',
       children: [
         {
-          path: '/user',
+          path: '/system',
           iconCls: 'fa fa-user-o',
           name: '系统管理',
-          component: UserMana
+          component: YBSystemList
         }
       ]
     }

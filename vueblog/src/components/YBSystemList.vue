@@ -28,11 +28,11 @@
         <!--<el-tab-pane label="业绩检查" name="perform_check">-->
           <!--<yb_result_check/>-->
         <!--</el-tab-pane>-->
-        <el-tab-pane label="销售新增" name="user_manage">
-          <yb_sale_add/>
+        <el-tab-pane label="系统用户" name="user_manage">
+          <user_mana/>
         </el-tab-pane>
-        <el-tab-pane label="销售查询" name="yb_user_query">
-          <yb_user_query/>
+        <el-tab-pane label="用户注册" name="reg">
+          <!--<yb_user_query/>-->
         </el-tab-pane>
       </el-tabs>
     </el-main>
@@ -46,6 +46,7 @@
   import {getRequest} from '../utils/api'
   import YBSaleQuery from "@/components/YBSaleQuery";
   import YBSaleAdd from "@/components/YBSaleAdd";
+  import UserMana from "./UserMana";
 
   export default {
     mounted: function () {
@@ -71,7 +72,7 @@
       'blog_table': BlogTable,
       'blog_cfg': BlogCfg,
       "yb_input": YBInput,
-      "yb_sale_add": YBSaleAdd,
+      "user_mana": UserMana,
       "yb_user_query": YBSaleQuery,
       "yb_result_check": YBResultCheck
 
