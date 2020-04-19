@@ -10,11 +10,10 @@ import java.util.List;
 
 /**
  * @author xupeng
- * @date: 14/04/2020
+ * date: 14/04/2020
  */
 @Mapper
 public interface YBSaleMapper {
-  int addNewSaleInput(YBSaleRecord ybSaleRecord);
 
   List<YBGroup> querySaleGroup();
 
@@ -25,4 +24,6 @@ public interface YBSaleMapper {
   int getUserCount();
 
   List<YBSaleRecord> getSaleResult(@Param("start_date") String startDate, @Param("end_date") String endDate);
+
+  void addSaleGroup(@Param("group_name") String groupName);
 }

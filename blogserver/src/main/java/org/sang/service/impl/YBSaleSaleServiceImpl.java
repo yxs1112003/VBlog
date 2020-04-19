@@ -4,6 +4,7 @@ import org.sang.bean.YBGroup;
 import org.sang.bean.YBSaleRecord;
 import org.sang.bean.YBSaleUser;
 import org.sang.mapper.YBSaleMapper;
+import org.sang.mapper.YBSaleRecordMapper;
 import org.sang.service.YBSaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,13 @@ public class YBSaleSaleServiceImpl implements YBSaleService {
   @Autowired
   private YBSaleMapper ybSaleMapper;
 
+  @Autowired
+  private YBSaleRecordMapper ybSaleRecordMapper;
+
+
   @Override
   public void addNewSaleInput(YBSaleRecord ybSaleRecord) {
-    ybSaleMapper.addNewSaleInput(ybSaleRecord);
+    ybSaleRecordMapper.addNewSaleInput(ybSaleRecord);
   }
 
   @Override
@@ -51,5 +56,10 @@ public class YBSaleSaleServiceImpl implements YBSaleService {
   @Override
   public List<YBSaleRecord> getSaleResult(String startDate, String endDate) {
     return ybSaleMapper.getSaleResult(startDate, endDate);
+  }
+
+  @Override
+  public void addSaleGroup(String groupName) {
+    ybSaleMapper.addSaleGroup(groupName);
   }
 }

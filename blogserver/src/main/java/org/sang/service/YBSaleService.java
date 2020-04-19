@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author xupeng
- * @date: 14/04/2020
+ *  14/04/2020
  */
 public interface YBSaleService {
   void addNewSaleInput(YBSaleRecord ybSaleRecord);
@@ -22,4 +22,6 @@ public interface YBSaleService {
   int getUserCount();
 
   List<YBSaleRecord> getSaleResult(String startDate, String endDate);
+
+  void addSaleGroup(String groupName);
 }

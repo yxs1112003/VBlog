@@ -79,8 +79,8 @@ public class YBSalerController {
   @ApiOperation(value = "业务检查", notes = "")
   @GetMapping("/get_sale_record")
   public Map<String, Object> getSaleRecord(
-          @RequestParam("start_date") String startDate,
-          @RequestParam("end_date") String endDate,
+          @RequestParam(value = "start_date") String startDate,
+          @RequestParam(value = "end_date") String endDate,
           @RequestParam(value = "page", defaultValue = "1") Integer page,
           @RequestParam(value = "count", defaultValue = "10") Integer count) {
     log.info("====> startDate:{},endDate:{}", startDate, endDate);
@@ -91,5 +91,12 @@ public class YBSalerController {
     map.put("articles", list);
     map.put("totalCount", totalCount);
     return map;
+  }
+
+  @ApiOperation(value = "销售数据录入", notes = "")
+  @GetMapping("/add_group")
+  public void addSaleGroup(@RequestParam(value = "groupName") String groupName) {
+    log.info("====> groupName: {}", groupName);
+    ybSaleService.addSaleGroup(groupName);
   }
 }

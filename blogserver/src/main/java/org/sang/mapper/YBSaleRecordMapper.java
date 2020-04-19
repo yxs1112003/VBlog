@@ -10,12 +10,14 @@ import java.util.List;
 
 /**
  * @author xupeng
- * @date: 14/04/2020
+ * date: 14/04/2020
  * <p>
  * yb业绩表
  */
 @Mapper
 public interface YBSaleRecordMapper {
+  int addNewSaleInput(YBSaleRecord ybSaleRecord);
+
   List<YBSaleRecord> getSaleRecord(
           @Param("start_date") String startDate,
           @Param("end_date") String endDate,

@@ -42,5 +42,7 @@
         SELECT count(*) FROM yb_sale_user
     </select>
 
-
+    <insert id="addSaleGroup" parameterType="org.sang.bean.YBGroup" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO yb_sale_group set group_name = #{group_name}
+    </insert>
 </mapper>
