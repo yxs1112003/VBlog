@@ -24,7 +24,9 @@
     },
     methods: {
       submitAddGroupReq() {
-        axios.get('/sale/add_group').then(resp => {
+        var url = '/sale/add_group?groupName=' + this.groupName;
+        console.info(url)
+        axios.get(url).then(resp => {
           if (resp.status == 200) {
             alert('添加成功！')
             this.clearData()
