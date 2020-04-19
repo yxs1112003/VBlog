@@ -60,7 +60,14 @@
       created: function () {
         this.querySaleGroup();
       },
-
+      clearData() {
+        this.userManageModel.username = '';
+        this.userManageModel.password = '';
+        this.userManageModel.phoneNumber = '';
+        this.userManageModel.display = '';
+        this.userManageModel.role = '';
+        this.userManageModel.groupId = '';
+      },
       submitForm() {
         axios.post('/sale/add_sale', {
           username: this.userManageModel.username,
@@ -69,7 +76,14 @@
           display: this.userManageModel.display,
           role: this.userManageModel.role,
           groupId: this.userManageModel.groupId
-        }).then(response => (this.info = response))
+        }).then(resp => {
+          if (resp.status == 200) {
+            alert('添加成功！')
+            this.clearData()
+          } else {
+            alert('添加失败！')
+          }
+        })
           .catch(function (error) { // 请求失败处理
             console.log(error);
           });
@@ -80,8 +94,6 @@
           id: this.userGroupModel.id,
           groupName: this.userGroupModel.groupName
         }).then(resp => {
-
-
             _this.loading = false;
             if (resp.status == 200) {
               _this.userGroupModel = resp.data;

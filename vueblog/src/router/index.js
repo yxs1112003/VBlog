@@ -8,6 +8,8 @@ import DataCharts from '@/components/DataCharts'
 import PostArticle from '@/components/PostArticle'
 import UserMana from '@/components/UserMana'
 import BlogDetail from '@/components/BlogDetail'
+import YBSaleAdd from "@/components/YBSaleAdd";
+import YBUserList from "../components/YBUserList";
 
 Vue.use(Router)
 
@@ -35,6 +37,7 @@ export default new Router({
           path: '/articleList',
           name: '销售业绩',
           component: ArticleList,
+          iconCls: 'fa fa-file-text-o',
           // hidden: true,
           meta: {
             keepAlive: true
@@ -104,22 +107,35 @@ export default new Router({
     //       component: DataCharts
     //     }
     //   ]
-    // }
-    // ,
-
-    // {
-    //   path: '/home',
-    //   component: Home,
-    //   name: '数据录入1',
-    //   iconCls: 'fa fa-bar-chart',
-    //   children: [
-    //     {
-    //       path: '/yb_input',
-    //       iconCls: 'fa fa-bar-chart',
-    //       name: '数据录入',
-    //       component: YBInput
-    //     }
-    //   ]
-    // }
+    // },
+    {
+      path: '/home',
+      component: Home,
+      name: '销售管理',
+      iconCls: 'fa fa-bar-chart',
+      children: [
+        {
+          path: '/charts',
+          iconCls: 'fa fa-bar-chart',
+          name: '销售管理',
+          component: YBUserList
+        }
+      ]
+    },
+    {
+      path: '/home',
+      component: Home,
+      name: '用户管理',
+      iconCls: 'fa fa-bar-chart',
+      children: [
+        {
+          path: '/user',
+          iconCls: 'fa fa-user-o',
+          name: '系统管理',
+          component: UserMana
+        }
+      ]
+    }
+    ,
   ]
 })
